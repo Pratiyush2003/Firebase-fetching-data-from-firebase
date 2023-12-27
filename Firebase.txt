@@ -1,0 +1,38 @@
+create new project in firebase
+copy firebase code from firebase
+
+--> goto firebase database
+--> import import { getFirestore } from "firebase/firestore" in the firebase.js
+--> export getFirestore form firebase.js
+--> export const db = getFirestore(app)
+
+
+submit data to firebase = 
+import valriable db from the firebase in your html form  
+
+import collection and adddoc from the collection means in which section
+and adddoc is method
+  const collectionRef = collection(db, 'crud')
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await addDoc(collectionRef, {name, email})
+    console.log('form submited')
+  }
+
+
+--Fetching data from the firebase using useEffect
+import fetch getdoc from the firebase
+and also you need to access data from the firebase you can use snapshot method
+
+useEffect(() => {
+  const fetchData = async () => {
+    onSnapshot(collectionRef, (acallback) => {
+      setData(acallback.docs.map((doc) => ({
+        ...doc.data(), id: doc.id
+      })))
+    })
+  }
+  fetchData()
+},[])
+console.log(data)
